@@ -16,7 +16,7 @@ const dlcSchema = new mongoose.Schema({
   releaseDate: String,
   totalReviews: Number,
   review_summary: String,
-  usertags: [String],
+  userTags: [String],
   previews: [String]
 });
 
@@ -39,7 +39,9 @@ var makeEntry = (data) => {
 
 var search = (gameId, CB) => {
   var results = dlc.find({ associatedGameId: gameId });
-  results.then(CB(doc));
+  results.then((doc) => {
+    CB(doc)
+  });
 };
 
 module.exports.makeEntry = makeEntry;
