@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test,', { useNewUrlParser: true });
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error'));
-db.once('open', function () {
-  console.log('mongoose opened!');
-});
+// mongoose.connect('mongodb://localhost/test,', { useNewUrlParser: true });
+
+// const connection = mongoose.connection;
+// connection.on('error', console.error.bind(console, 'connection error'));
+// connection.once('open', function () {
+//   console.log('mongoose opened!');
+//   //console.log(connection.collections);
+
+// });
 
 const dlcSchema = new mongoose.Schema({
   dlcId: Number,
@@ -17,12 +20,12 @@ const dlcSchema = new mongoose.Schema({
   totalReviews: Number,
   review_summary: String,
   userTags: [String],
-  previews: [String]
+  previews: [String],
 });
 
-const dlc = mongoose.model('DLC', dlcSchema);
+const dlc = mongoose.model('dlc', dlcSchema);
 
-var makeEntry = (data) => {
+const makeEntry = (data) => {
   dlc.create({
     dlcId: data.dlcId,
     associatedGameId: data.associatedGameId,
@@ -33,14 +36,17 @@ var makeEntry = (data) => {
     totalReviews: data.totalReviews,
     reviewSummary: data.reviewSummary,
     usertags: data.usertags,
-    previews: data.previews
-  })
+    previews: data.previews,
+  });
 };
 
-var search = (gameId, CB) => {
-  var results = dlc.find({ associatedGameId: gameId });
-  results.then((doc) => {
-    CB(doc)
+const search = (gameId, CB) => {
+  console.log('ID: ', gameId);
+  dlc.find({ associatedGameId: gameId }, (err, doc) => {
+    if (err) {
+      console.error(err);
+    }
+    CB(doc);
   });
 };
 

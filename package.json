@@ -10,7 +10,7 @@
   "scripts": {
     "server": "nodemon ./server/index.js",
     "build": "webpack --mode=development --watch",
-    "seed": "node ./seeder/seeder.js"
+    "seed": "DEBUG=mongo-seeding node ./seeder/seeder.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
