@@ -40,9 +40,8 @@ const makeEntry = (data) => {
   });
 };
 
-const search = (gameId, CB) => {
-  console.log('ID: ', gameId);
-  dlc.find({ associatedGameId: gameId }, (err, doc) => {
+const search = (param, CB) => {
+  dlc.find(param, (err, doc) => {
     if (err) {
       console.error(err);
     }

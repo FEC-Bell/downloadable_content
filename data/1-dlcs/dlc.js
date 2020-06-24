@@ -100,7 +100,6 @@ const init = function () {
     dlcs = dlcs.concat(generateDlc(i, numDlc));
   }
 
-  console.log(Array.isArray(dlcs));
 };
 
 init();
