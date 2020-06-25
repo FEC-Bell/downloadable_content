@@ -11,20 +11,14 @@ const config = {
   dropDatabase: true,
 };
 
-//console.log(dlcData);
-
-
 const seeder = new Seeder(config);
 
-
-var collections = seeder.readCollectionsFromPath(
+const collections = seeder.readCollectionsFromPath(
   path.resolve('./data'),
   {
     transformers: [Seeder.Transformers.replaceDocumentIdWithUnderscoreId],
   },
 );
-
-console.log('collections: ', collections);
 
 seeder
   .import(collections)
