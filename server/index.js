@@ -1,31 +1,39 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const path = require('path');
+// const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 const mongoose = require('mongoose');
 
-let app = express();
+const app = express();
+const PORT = 3000;
+
+app.use(express.json());
+app.use('/static', express.static(path.join(__dirname, 'dist')));
+
 
 mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true });
 const connection = mongoose.connection;
 connection.on('error', console.error.bind(console, 'connection error'));
 connection.once('open', function () {
   console.log('mongoose opened!');
+});
 
-  connection.db.collection("dlcs", function (err, collection) {
-    //console.log(collection.find());
-    // collection.find().toArray(function (err, data) {
-    //   if (err) {
-    //     console.error('ERR ', err);
-    //   }
-    //   console.log(data); // it will print your collection data
-    // })
-  });
+app.get('/api/dlc/:game_id', (req, res) => {
+  let param = { associatedGameId: req.params.game_id };
+  db.search(param, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      if (data.length) {
+        res.send(data);
+      } else {
+        res.status(404).send('Game ID not found!');
+      }
+    }
 
-  db.search(18, (data) => {
-    console.log('db data: ', data);
   })
 });
 
-// db.search(18, (data) => {
-//   console.log('db data: ', data);
-// })
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
+})

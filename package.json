@@ -10,12 +10,14 @@
   "scripts": {
     "server": "nodemon ./server/index.js",
     "build": "webpack --mode=development --watch",
-    "seed": "DEBUG=mongo-seeding node ./seeder/seeder.js"
+    "seed": "node ./seeder/seeder.js",
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
+    "jest": "^26.1.0",
     "mongo-seeding": "^3.4.1",
     "mongo-seeding-cli": "^3.4.1",
     "mongoose": "^5.9.19",
