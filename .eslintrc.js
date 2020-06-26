@@ -6,8 +6,7 @@ module.exports = {
     node: true,
   },
   extends: [
-    'plugin:react/recommended',
-    'airbnb',
+    './node_modules/eslint-config-hackreactor/index.js',
   ],
   globals: {
     Atomics: 'readonly',
