@@ -1,15 +1,4 @@
 const mongoose = require('mongoose');
-
-// mongoose.connect('mongodb://localhost/test,', { useNewUrlParser: true });
-
-// const connection = mongoose.connection;
-// connection.on('error', console.error.bind(console, 'connection error'));
-// connection.once('open', function () {
-//   console.log('mongoose opened!');
-//   //console.log(connection.collections);
-
-// });
-
 const dlcSchema = new mongoose.Schema({
   dlcId: Number,
   associatedGameId: Number,
@@ -40,12 +29,13 @@ const makeEntry = (data) => {
   });
 };
 
-const search = (param, CB) => {
+const search = (param, callback) => {
   dlc.find(param, (err, doc) => {
     if (err) {
       console.error(err);
+      callback(err);
     }
-    CB(doc);
+    callback(null, doc);
   });
 };
 

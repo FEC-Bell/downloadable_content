@@ -20,8 +20,17 @@ connection.once('open', function () {
 
 app.get('/api/dlc/:game_id', (req, res) => {
   let param = { associatedGameId: req.params.game_id };
-  db.search(param, (data) => {
-    res.send(data);
+  db.search(param, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      if (data.length) {
+        res.send(data);
+      } else {
+        res.status(404).send('Game ID not found!');
+      }
+    }
+
   })
 });
 
