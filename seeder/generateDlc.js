@@ -58,7 +58,7 @@ const generateDlc = function (associatedGameId, n) {
     dlc.discountRate = discounts[Math.floor(Math.random() * discounts.length)];
     dlc.releaseDate = faker.date.between(new Date(minYear, 0), Date()).toString();
     dlc.totalReviews = Math.floor(Math.random() * maxReviews);
-    dlc.review_summary = reviewRatings[Math.floor(Math.random() * reviewRatings.length)];
+    dlc.reviewSummary = reviewRatings[Math.floor(Math.random() * reviewRatings.length)];
     dlc.userTags = [];
     dlc.previews = [];
 
