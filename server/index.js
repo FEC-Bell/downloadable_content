@@ -15,6 +15,12 @@ const connection = mongoose.connection;
 connection.on('error', console.error.bind(console, 'connection error'));
 connection.once('open', function () {
   console.log('mongoose opened!');
+  db.searchDLC({}, (err, doc) => {
+    console.log('dlcs: ', doc.length);
+  });
+  db.searchTitle({}, (err, doc) => {
+    console.log('titles: ', doc);
+  });
 });
 
 app.get('/api/dlc/:gameId', (req, res) => {
