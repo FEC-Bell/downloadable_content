@@ -1,25 +1,26 @@
 const cloudinary = require('cloudinary').v2;
 const credinetials = require('../cloudinary_key');
+const Promise = require('bluebird');
 const faker = require('faker');
-const maxImages = 400;
+const fs = require('fs');
+const maxImages = 1000;
 
-cloudinary.config({
-  cloud_name: credinetials.cloud_name,
-  api_key: credinetials.api_key,
-  api_secret: credinetials.api_secret
-});
+cloudinary.config(credinetials);
+var uploadPromise = Promise.promisify(cloudinary.uploader.upload);
 
+const uploader = function (maxImages) {
 
-const upload = function (maxImages) {
+  let photoArr = [];
   for (let i = 0; i < maxImages; i++) {
     let link = faker.image.imageUrl(600, 338, 'food', true);
-    cloudinary.uploader.upload(link, (err, result) => {
+
+    let test = uploadPromise(link).then((err, data) => {
       if (err) {
-        console.error('error uploading: ', err);
+        console.log(err);
       }
-      console.log('upload succ: ', result);
     });
   }
+
 };
 
-upload(maxImages);
+uploader(maxImages);
