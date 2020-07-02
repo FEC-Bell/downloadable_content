@@ -1,25 +1,25 @@
 const path = require('path');
 
 module.exports = {
-  entry: './client/index.js',
+  entry: __dirname + '/client/src/index.jsx',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: __dirname + '/client/dist'
   },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.m?jsx$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react'],
-            sourceMaps: "inline"
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+            sourceMaps: "inline",
           }
         }
       }
     ]
   }
 
-}
+};

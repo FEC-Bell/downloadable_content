@@ -24,7 +24,6 @@ const getphotos = async (max) => {
       console.error(e);
       return;
     }
-
   }
 
   fs.writeFile(__dirname + '/raw/photoUrl.js', JSON.stringify(photos), 'utf-8', (err, succ) => {
@@ -33,6 +32,6 @@ const getphotos = async (max) => {
     }
     console.log('saved!');
   });
-}
+};
 
 getphotos(200);

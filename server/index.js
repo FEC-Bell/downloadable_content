@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use('/static', express.static(path.join(__dirname, 'dist')));
+app.use(express.static(__dirname + '/../client/dist'));
 
 
 mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true });
@@ -19,6 +19,7 @@ connection.once('open', function () {
 
 app.get('/api/dlc/:gameId', (req, res) => {
   let param = { associatedGameId: req.params.gameId };
+  console.log('GET received, ID= ' + param.associatedGameId);
   db.searchDLC(param, (err, data) => {
     if (err) {
       res.sendStatus(500);
