@@ -7,12 +7,19 @@ const dlcSchema = new mongoose.Schema({
   discountRate: Number,
   releaseDate: String,
   totalReviews: Number,
-  review_summary: String,
+  reviewSummary: String,
   userTags: [String],
   previews: [String],
 });
+const titleSchema = new mongoose.Schema({
+  gameId: Number,
+  gameTitle: String
+});
+
+
 
 const dlc = mongoose.model('dlc', dlcSchema);
+const title = mongoose.model('title', titleSchema);
 
 const makeEntry = (data) => {
   dlc.create({
@@ -29,7 +36,7 @@ const makeEntry = (data) => {
   });
 };
 
-const search = (param, callback) => {
+const searchDLC = (param, callback) => {
   dlc.find(param, (err, doc) => {
     if (err) {
       console.error(err);
@@ -39,5 +46,19 @@ const search = (param, callback) => {
   });
 };
 
+const searchTitle = (param, callback) => {
+  title.find(param, (err, doc) => {
+    if (err) {
+      console.error(err);
+      callback(err);
+    }
+    callback(null, doc);
+  });
+};
+
+
+
+
 module.exports.makeEntry = makeEntry;
-module.exports.search = search;
+module.exports.searchDLC = searchDLC;
+module.exports.searchTitle = searchTitle;

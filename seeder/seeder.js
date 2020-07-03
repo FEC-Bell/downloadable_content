@@ -1,6 +1,7 @@
 const path = require('path');
 
-const dlcData = require('../data/1-dlcs/dlc.js');
+const gameNames = require('./data/2-titles/title');
+const dlcData = require('./data/1-dlcs/dlc');
 const { Seeder } = require('mongo-seeding');
 
 const config = {
@@ -14,7 +15,7 @@ const config = {
 const seeder = new Seeder(config);
 
 const collections = seeder.readCollectionsFromPath(
-  path.resolve('./data'),
+  path.resolve('./seeder/data'),
   {
     transformers: [Seeder.Transformers.replaceDocumentIdWithUnderscoreId],
   },
