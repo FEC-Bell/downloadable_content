@@ -69,18 +69,25 @@ class Entry extends React.Component {
     this.state = {
       hover: false
     };
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+
+  handleToggle() {
+    this.setState({
+      hover: !this.state.hover
+    });
   }
 
   render() {
     return (
-      <DlcRow className='dlcRow'>
+      <DlcRow className='dlcRow' highlight={this.state.hover}>
         <DlcPrice className='dlcPrice'>
           {
             (this.props.data.discountRate === 0) ? `$${(this.props.data.dlcPrice).toFixed(2)}` :
               <DiscountBlock price={this.props.data.dlcPrice} discount={this.props.data.discountRate} />
           }
         </DlcPrice>
-        <DlcName className='dlcName'>
+        <DlcName className='dlcName' onMouseOver={this.handleToggle} onMouseOut={this.handleToggle}>
           {this.props.data.title}
         </DlcName>
       </DlcRow>

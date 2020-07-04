@@ -28,8 +28,8 @@ font-style: normal;
 `;
 
 const MainContainer = styled.div`
-// margin-bottom: 11px;
-// margin-top: 60px;
+margin-bottom: 11px;
+margin-top: 60px;
 background: #1b2838;
 `;
 
@@ -56,8 +56,9 @@ margin: 0;
 
 const DlcRow = styled.div`
 background: linear-gradient(135deg, rgba(97,100,101,0.3) 0%,rgba(226,244,255,0.3) 100%);
+background-color: ${props => props.highlight ? '#417a9b' : '#1a1a1a'};
 display: block;
-color: #a8b2ba;
+color: ${props => props.highlight ? '#ffffff' : '#a8b2ba'};
 font-size: 12px;
 position: relative;
 padding: 4px 14px;
