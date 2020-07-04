@@ -30,4 +30,35 @@ const MainContainer = styled.div`
 background: #1b2838;
 `;
 
-export { Title, MainContainer, Browse };
+const DlcTable = styled.div`
+color: #a8b2ba;
+font-size: 12px;
+`;
+
+const DlcPrice = styled.div`
+display: block;
+position: absolute;
+right: 14px;
+padding: 0;
+margin: 0;
+color: #fff;
+`;
+
+const DiscountBloc = styled.div`
+line-height: 15px;
+position: relative;
+padding: 0;
+margin: 0;
+`;
+
+const DlcRow = styled.div`
+background: linear-gradient(135deg, rgba(97,100,101,0.3) 0%,rgba(226,244,255,0.3) 100%);
+display: block;
+color: #a8b2ba;
+font-size: 12px;
+position: relative;
+padding: 4px 14px;
+margin-bottom: 1px;
+`;
+
+export { Title, MainContainer, Browse, DlcTable, DlcPrice, DlcRow, DiscountBloc };

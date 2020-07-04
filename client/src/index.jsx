@@ -1,18 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RelatedContent from './components/container.jsx';
+import DlcList from './components/dlcList.jsx';
 import axios from 'axios';
 import { MainContainer, Title, Browse } from './components/styles/auxstyles.js';
 const url = '/api/dlc/';
-
-
-
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameId: 2,
+      gameId: 100,
       data: [{}]
     };
     this.getData = this.getData.bind(this);
@@ -46,7 +43,7 @@ class App extends React.Component {
             </a>
           </Browse>
         </Title>
-        <RelatedContent data={this.state.data} />
+        <DlcList data={this.state.data} />
       </MainContainer>
     );
   }

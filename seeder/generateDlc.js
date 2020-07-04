@@ -1,6 +1,6 @@
 const faker = require('faker');
 const relatedData = require('./raw/related_dlc_data');
-const photoUrls = require('./raw/photoUrl');
+var photoUrls = require('./raw/photoUrl');
 const maxDlcPrice = 50;
 const minDlcPrice = 1;
 const maxTags = 15;
@@ -85,7 +85,7 @@ const generateDlc = function () {
       }
       while (numPreviews) {
         const url = photoUrls.splice(0, 1);
-        dlc.previews.push(url);
+        dlc.previews = dlc.previews.concat(url);
         numPreviews -= 1;
       }
       dlcId += 1;
