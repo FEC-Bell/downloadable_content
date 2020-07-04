@@ -19,7 +19,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameId: 100,
+      gameId: 88,
       data: [{}]
     };
     this.getData = this.getData.bind(this);
@@ -42,19 +42,21 @@ class App extends React.Component {
   }
   render() {
     return (
-      <MainContainer>
-        <Title>CONTENT FOR THIS GAME
-          <Browse className='note'>
-            <StyledA href="https://google.com">
-              {`Browse all `}
-              <em style={{ fontStyle: 'normal' }}>
-                ({this.state.data.length})
-              </em>
-            </StyledA>
-          </Browse>
-        </Title>
-        <DlcList data={this.state.data} />
-      </MainContainer >
+      Object.keys(this.state.data[0]).length ?
+        <MainContainer>
+          <Title>CONTENT FOR THIS GAME
+            <Browse className='note'>
+              <StyledA href="https://google.com">
+                {`Browse all `}
+                <em style={{ fontStyle: 'normal' }}>
+                  ({this.state.data.length})
+                </em>
+              </StyledA>
+            </Browse>
+          </Title>
+          <DlcList data={this.state.data} />
+        </MainContainer >
+        : <MainContainer></MainContainer>
     );
   }
 }
