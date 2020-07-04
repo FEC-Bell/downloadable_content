@@ -22,6 +22,9 @@ text-transform: none;
 letter-spacing: 0;
 any-link { color: #fff };
 any-link:active { color: #fff };
+color: #ffffff;
+font-weight: normal;
+font-style: normal;
 `;
 
 const MainContainer = styled.div`

@@ -3,7 +3,17 @@ import ReactDOM from 'react-dom';
 import DlcList from './components/dlcList.jsx';
 import axios from 'axios';
 import { MainContainer, Title, Browse } from './components/styles/auxstyles.js';
+import styled from 'styled-components';
+
 const url = '/api/dlc/';
+
+const StyledA = styled.a`
+color: inherit;
+text-decoration: none;
+text-transform: none;
+letter-spacing: 0;
+`;
+
 
 class App extends React.Component {
   constructor(props) {
@@ -35,16 +45,16 @@ class App extends React.Component {
       <MainContainer>
         <Title>CONTENT FOR THIS GAME
           <Browse className='note'>
-            <a href="https://google.com">
-              Browse all
-              <em>
+            <StyledA href="https://google.com">
+              {`Browse all `}
+              <em style={{ fontStyle: 'normal' }}>
                 ({this.state.data.length})
               </em>
-            </a>
+            </StyledA>
           </Browse>
         </Title>
         <DlcList data={this.state.data} />
-      </MainContainer>
+      </MainContainer >
     );
   }
 }

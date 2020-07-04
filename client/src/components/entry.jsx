@@ -74,7 +74,6 @@ class Entry extends React.Component {
   render() {
     return (
       <DlcRow className='dlcRow'>
-
         <DlcPrice className='dlcPrice'>
           {
             (this.props.data.discountRate === 0) ? `$${(this.props.data.dlcPrice).toFixed(2)}` :
