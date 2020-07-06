@@ -15,6 +15,18 @@ text-transform: none;
 letter-spacing: 0;
 `;
 
+const ArrowLeft = styled.div`
+background-position: left;
+left: 5px;
+width: 7px;
+height: 15px;
+background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJlJREFUeNqc0k0KgCAQBlCdI0SLlkEtu4DLTt6yC7SN2hX0cwWbCQvDMa0PBhN9EsxIrbXgMs57RWueJR13Di+ooboeCEILpaZYDC/oCoshgLwYIhCL5TBtMcjOilUT1OJH6FdLrOWDobslYIN7/FCRmO4oMmCmIwbf6NGOAH4gZwA82EFnO7ghx14VuLRm6yAvtLDgEOUQYADt6VgCZRDsZgAAAABJRU5ErkJggg==) no-repeat top;
+position: absolute;
+padding: 0;
+margin: 0;
+display: block;
+`;
+
 
 class App extends React.Component {
   constructor(props) {
@@ -55,19 +67,23 @@ class App extends React.Component {
     return (
       Object.keys(this.state.data[0]).length ?
         <MainContainer>
-          <Title>CONTENT FOR THIS GAME
-            <Browse className='note'>
-              <StyledA href='https://google.com'>
-                {`Browse all `}
-                <em style={{ fontStyle: 'normal' }}>
-                  ({this.state.data.length})
-                </em>
-              </StyledA>
-            </Browse>
-          </Title>
+          <div>
+            <Title>CONTENT FOR THIS GAME
+              <Browse className='note'>
+                <StyledA href='https://google.com'>
+                  {`Browse all `}
+                  <em style={{ fontStyle: 'normal' }}>
+                    ({this.state.data.length})
+                  </em>
+                </StyledA>
+              </Browse>
+            </Title>
+          </div>
+
           <DlcList data={this.state.data} setHoverPosition={this.setHoverPosition} />
-          <Hover style={{ left: this.state.hover_left, top: this.state.hover_top }}>
-            hello
+          <Hover left={this.state.hoverLeft} top={this.state.hoverTop} data={this.state.selectedDlc}>
+            <DlcHover data={this.state.selectedDlc} />
+            <ArrowLeft style={{ top: 10 }}></ArrowLeft>
           </Hover>
         </MainContainer >
         : <MainContainer></MainContainer>
