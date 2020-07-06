@@ -1,6 +1,6 @@
 import React from 'react';
 // import { DlcTable } from './styles/auxstyles.js';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import moment from 'moment';
 
 const StyledContent = styled.div`
@@ -32,6 +32,15 @@ height: 153px;
 margin: 5px 0;
 `;
 
+const ScreenshotHoverFadein = keyframes`
+from {
+  opacity: 0;
+}
+to {
+  opacity: 1;
+}
+`;
+
 const Screenshot = styled.div`
 position: absolute;
 width: 100%;
@@ -40,9 +49,8 @@ background-size: cover;
 background-position: center center;
 opacity: 0;
 transition: opacity 300ms;
-animation: screenshot_hover_fadein 4s linear;
+animation: ${ScreenshotHoverFadein} 3s linear;
 animation-iteration-count: infinite;
-background-image: url(${props => props.url});
 display: block;
 `;
 
@@ -135,7 +143,7 @@ const Content = (props) => {
         <StyledScreenshots id='hoverScreenshots'>
           {props.data.previews.map((url, idx) => {
             return (
-              <Screenshot style={{ animationDelay: `${idx + 1}s` }} url={url}>
+              <Screenshot style={{ animationDelay: `${idx}s`, backgroundImage: `url(${url})` }}>
               </Screenshot>
             );
           })}
