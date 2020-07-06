@@ -69,6 +69,7 @@ class Entry extends React.Component {
     this.state = {
       hover: false
     };
+    this.selector = React.createRef();
     this.handleToggle = this.handleToggle.bind(this);
   }
 
@@ -76,11 +77,18 @@ class Entry extends React.Component {
     this.setState({
       hover: !this.state.hover
     });
+
+    let position = this.selector.current.getBoundingClientRect();
+    if (!this.state.hover) {
+      this.props.setHoverPosition(position.left, position.top, this.props.data);
+    } else {
+      this.props.setHoverPosition(position.left, position.top, {});
+    }
   }
 
   render() {
     return (
-      <DlcRow className='dlcRow' highlight={this.state.hover}>
+      <DlcRow className='dlcRow' highlight={this.state.hover} ref={this.selector}>
         <DlcPrice className='dlcPrice'>
           {
             (this.props.data.discountRate === 0) ? `$${(this.props.data.dlcPrice).toFixed(2)}` :

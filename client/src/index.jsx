@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DlcList from './components/dlcList.jsx';
+import DlcHover from './components/dlcHover.jsx';
 import axios from 'axios';
-import { MainContainer, Title, Browse } from './components/styles/auxstyles.js';
+import { MainContainer, Title, Browse, Hover } from './components/styles/auxstyles.js';
 import styled from 'styled-components';
 
 const url = '/api/dlc/';
@@ -19,14 +20,24 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameId: 88,
-      data: [{}]
+      gameId: 66,
+      data: [{}],
+      hoverLeft: '',
+      hoverTop: '',
+      selectedDlc: {}
     };
     this.getData = this.getData.bind(this);
+    this.setHoverPosition = this.setHoverPosition.bind(this);
   }
 
   componentDidMount() {
     this.getData(this.state.gameId);
+  }
+
+  setHoverPosition(hoverLeft, hoverTop, selectedDlc) {
+    this.setState({
+      hoverLeft, hoverTop, selectedDlc
+    });
   }
 
   getData(gameId = 1) {
@@ -46,7 +57,7 @@ class App extends React.Component {
         <MainContainer>
           <Title>CONTENT FOR THIS GAME
             <Browse className='note'>
-              <StyledA href="https://google.com">
+              <StyledA href='https://google.com'>
                 {`Browse all `}
                 <em style={{ fontStyle: 'normal' }}>
                   ({this.state.data.length})
@@ -54,7 +65,10 @@ class App extends React.Component {
               </StyledA>
             </Browse>
           </Title>
-          <DlcList data={this.state.data} />
+          <DlcList data={this.state.data} setHoverPosition={this.setHoverPosition} />
+          <Hover style={{ left: this.state.hover_left, top: this.state.hover_top }}>
+            hello
+          </Hover>
         </MainContainer >
         : <MainContainer></MainContainer>
     );

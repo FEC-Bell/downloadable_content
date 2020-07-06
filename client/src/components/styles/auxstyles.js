@@ -4,9 +4,14 @@ const Title = styled.h2`
 font-size: 14px;
 letter-spacing: 2px;
 font-weight: normal;
+line-height: 26px;
 padding-top: 2px;
 margin: 0 0 10px;
+margin-bottom: 1px;
 color: #fff;
+background-image: url(https://steamstore-a.akamaihd.net/public/images/v6/maincol_gradient_rule.png);
+background-repeat: no-repeat;
+background-position: bottom left;
 `;
 
 const Browse = styled.span`
@@ -31,6 +36,17 @@ const MainContainer = styled.div`
 margin-bottom: 11px;
 margin-top: 60px;
 background: #1b2838;
+`;
+
+const Hover = styled.div`
+position: absolute;
+z-index: 1526;
+padding: 5px 12px 0 12px;
+margin: 0;
+display: block;
+opacity: 1;
+color: #c6d4df;
+font-size: 12px;
 `;
 
 const DlcTable = styled.div`
@@ -65,4 +81,4 @@ padding: 4px 14px;
 margin-bottom: 1px;
 `;
 
-export { Title, MainContainer, Browse, DlcTable, DlcPrice, DlcRow, DiscountBloc };
+export { Title, MainContainer, Browse, Hover, DlcTable, DlcPrice, DlcRow, DiscountBloc };

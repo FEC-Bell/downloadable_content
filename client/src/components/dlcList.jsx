@@ -8,7 +8,7 @@ const DlcList = (props) => {
       {
         props.data.map((dlc) => {
           return (
-            <Entry data={dlc} />
+            <Entry data={dlc} setHoverPosition={props.setHoverPosition} />
           );
         })
       }
