@@ -5,12 +5,8 @@ import {
   StyledScreenshots, HoverBox, StyledContent
 } from './styles/auxstyles.js';
 
-
-
 const positives = ['Overwhelmingly Positive', 'Mostly Positive', 'Very Positive'];
 const negatives = ['Overwhelmingly Negative', 'Mostly Negative', 'Very Negative'];
-
-
 
 const Content = (props) => {
   let color;
