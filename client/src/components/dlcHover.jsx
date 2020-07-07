@@ -41,6 +41,7 @@ const Content = (props) => {
           <StyledReviewSum>
             <div className='title'>Overall user reviews:</div>
             <StyledReview summary={color}>{props.data.reviewSummary}</StyledReview>
+            {/* TO DO: add comma separator to number of reviews */}
             {` (${props.data.totalReviews} reviews)`}
             <div style={{ clear: 'left' }}></div>
           </StyledReviewSum>
