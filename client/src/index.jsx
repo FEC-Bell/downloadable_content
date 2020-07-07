@@ -28,7 +28,7 @@ display: block;
 `;
 
 
-class App extends React.Component {
+class Dlc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -91,4 +91,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Dlc />, document.getElementById('dlc'));
