@@ -3,7 +3,7 @@ import moment from 'moment';
 import {
   StyledReviewSum, StyledBody, StyledTag, StyledRow, StyledRelease, StyledTitle, StyledReview, Screenshot,
   StyledScreenshots, HoverBox, StyledContent
-} from './styles/auxstyles.js';
+} from './styles/hoverStyles.js';
 
 const positives = ['Overwhelmingly Positive', 'Mostly Positive', 'Very Positive'];
 const negatives = ['Overwhelmingly Negative', 'Mostly Negative', 'Very Negative'];
