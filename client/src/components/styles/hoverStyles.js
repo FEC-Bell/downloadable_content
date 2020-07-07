@@ -58,7 +58,6 @@ color: ${props => props.summary};
 const StyledTitle = styled.h4`
 color: #222d3d;
 font-size: 15px;
-font-family: "Motiva Sans", Sans-serif;
 font-weight: normal;
 text-transform: unset;
 letter-spacing: 0px;
