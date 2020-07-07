@@ -5,6 +5,7 @@ import DlcHover from './components/dlcHover.jsx';
 import axios from 'axios';
 import { MainContainer, Title, Browse, Hover } from './components/styles/auxstyles.js';
 import styled from 'styled-components';
+import { GlobalStyle } from './components/styles/globalStyles.js';
 
 const url = '/api/dlc/';
 
@@ -66,28 +67,33 @@ class Dlc extends React.Component {
   }
   render() {
     return (
-      Object.keys(this.state.data[0]).length ?
-        <MainContainer>
-          <div>
-            <Title>CONTENT FOR THIS GAME
-              <Browse className='note'>
-                <StyledA href='https://google.com'>
-                  {`Browse all `}
-                  <em style={{ fontStyle: 'normal' }}>
-                    ({this.state.data.length})
-                  </em>
-                </StyledA>
-              </Browse>
-            </Title>
-          </div>
+      <React.Fragment>
+        <GlobalStyle />
+        {Object.keys(this.state.data[0]).length ?
+          <MainContainer>
+            <div>
+              <Title>CONTENT FOR THIS GAME
+                <Browse className='note'>
+                  <StyledA href='https://google.com'>
+                    {`Browse all `}
+                    <em style={{ fontStyle: 'normal' }}>
+                      ({this.state.data.length})
+                    </em>
+                  </StyledA>
+                </Browse>
+              </Title>
+            </div>
 
-          <DlcList data={this.state.data} setHoverPosition={this.setHoverPosition} />
-          <Hover left={this.state.hoverLeft} top={this.state.hoverTop} data={this.state.selectedDlc}>
-            <DlcHover data={this.state.selectedDlc} />
-            <ArrowLeft style={{ top: 10 }}></ArrowLeft>
-          </Hover>
-        </MainContainer >
-        : <MainContainer></MainContainer>
+            <DlcList data={this.state.data} setHoverPosition={this.setHoverPosition} />
+            <Hover left={this.state.hoverLeft} top={this.state.hoverTop} data={this.state.selectedDlc}>
+              <DlcHover data={this.state.selectedDlc} />
+              <ArrowLeft style={{ top: 10 }}></ArrowLeft>
+            </Hover>
+          </MainContainer >
+          : <MainContainer></MainContainer>
+        }
+      </React.Fragment>
+
     );
   }
 }
