@@ -15,6 +15,7 @@ text-transform: none;
 letter-spacing: 0;
 `;
 
+//TO DO: fix sizing problem to make arrow look like an arrow
 const ArrowLeft = styled.div`
 background-position: left;
 left: 5px;

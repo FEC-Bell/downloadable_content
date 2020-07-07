@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+//TO DO: refactor to reuse styling though inheritance
 const Title = styled.h2`
 font-size: 14px;
 letter-spacing: 2px;
