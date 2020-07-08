@@ -18,6 +18,8 @@ const Content = (props) => {
     color = '#b9a06a';
   }
 
+  let moddedReviews = props.data.totalReviews.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+
   return (
     <HoverBox id='hoverBox'>
       <StyledContent>
@@ -41,8 +43,7 @@ const Content = (props) => {
           <StyledReviewSum>
             <div className='title'>Overall user reviews:</div>
             <StyledReview summary={color}>{props.data.reviewSummary}</StyledReview>
-            {/* TO DO: add comma separator to number of reviews */}
-            {` (${props.data.totalReviews} reviews)`}
+            {` (${moddedReviews} reviews)`}
             <div style={{ clear: 'left' }}></div>
           </StyledReviewSum>
         </StyledBody>

@@ -4,7 +4,7 @@ const db = require('../database/index.js');
 const mongoose = require('mongoose');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3003;
 
 app.use(express.json());
 app.use(express.static(__dirname + '/../client/dist'));
