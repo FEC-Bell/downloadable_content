@@ -85,7 +85,7 @@ class Entry extends React.Component {
       this.props.setHoverPosition(`${position.right - 8}px`, `${position.top - 40}px`, this.props.data);
     } else {
       //comment out to for debugging
-      // this.props.setHoverPosition(`${position.right - 10}px`, `${position.top}px`, {});
+      this.props.setHoverPosition(`${position.right - 10}px`, `${position.top}px`, {});
     }
   }
 
