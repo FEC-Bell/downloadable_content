@@ -78,11 +78,14 @@ class Entry extends React.Component {
       hover: !this.state.hover
     });
 
+    //TODO: adjust position so hover box appears to the right of the row
     let position = this.selector.current.getBoundingClientRect();
     if (!this.state.hover) {
-      this.props.setHoverPosition(position.left, position.top, this.props.data);
+      //10px offset is arbitrary, will fine tune
+      this.props.setHoverPosition(`${position.right - 10}px`, `${position.top}px`, this.props.data);
     } else {
-      this.props.setHoverPosition(position.left, position.top, {});
+      //comment out to for debugging
+      this.props.setHoverPosition(`${position.right - 10}px`, `${position.top}px`, {});
     }
   }
 

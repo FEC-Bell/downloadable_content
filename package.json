@@ -23,6 +23,7 @@
     "faker": "^4.1.0",
     "jest": "^26.1.0",
     "jquery": "^3.5.1",
+    "moment": "^2.27.0",
     "mongo-seeding": "^3.4.1",
     "mongo-seeding-cli": "^3.4.1",
     "mongoose": "^5.9.19",

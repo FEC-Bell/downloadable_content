@@ -5,6 +5,7 @@ import DlcHover from './components/dlcHover.jsx';
 import axios from 'axios';
 import { MainContainer, Title, Browse, Hover } from './components/styles/auxstyles.js';
 import styled from 'styled-components';
+import { GlobalStyle } from './components/styles/globalStyles.js';
 
 const url = '/api/dlc/';
 
@@ -15,8 +16,21 @@ text-transform: none;
 letter-spacing: 0;
 `;
 
+//TO DO: fix sizing problem to make arrow look like an arrow
+const ArrowLeft = styled.div`
+background-position: left;
+left: 5px;
+width: 7px;
+height: 15px;
+background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJlJREFUeNqc0k0KgCAQBlCdI0SLlkEtu4DLTt6yC7SN2hX0cwWbCQvDMa0PBhN9EsxIrbXgMs57RWueJR13Di+ooboeCEILpaZYDC/oCoshgLwYIhCL5TBtMcjOilUT1OJH6FdLrOWDobslYIN7/FCRmO4oMmCmIwbf6NGOAH4gZwA82EFnO7ghx14VuLRm6yAvtLDgEOUQYADt6VgCZRDsZgAAAABJRU5ErkJggg==) no-repeat top;
+position: absolute;
+padding: 0;
+margin: 0;
+display: block;
+`;
 
-class App extends React.Component {
+
+class Dlc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,26 +67,35 @@ class App extends React.Component {
   }
   render() {
     return (
-      Object.keys(this.state.data[0]).length ?
-        <MainContainer>
-          <Title>CONTENT FOR THIS GAME
-            <Browse className='note'>
-              <StyledA href='https://google.com'>
-                {`Browse all `}
-                <em style={{ fontStyle: 'normal' }}>
-                  ({this.state.data.length})
-                </em>
-              </StyledA>
-            </Browse>
-          </Title>
-          <DlcList data={this.state.data} setHoverPosition={this.setHoverPosition} />
-          <Hover style={{ left: this.state.hover_left, top: this.state.hover_top }}>
-            hello
-          </Hover>
-        </MainContainer >
-        : <MainContainer></MainContainer>
+      <React.Fragment>
+        <GlobalStyle />
+        {Object.keys(this.state.data[0]).length ?
+          <MainContainer>
+            <div>
+              <Title>CONTENT FOR THIS GAME
+                <Browse className='note'>
+                  <StyledA href='https://google.com'>
+                    {`Browse all `}
+                    <em style={{ fontStyle: 'normal' }}>
+                      ({this.state.data.length})
+                    </em>
+                  </StyledA>
+                </Browse>
+              </Title>
+            </div>
+
+            <DlcList data={this.state.data} setHoverPosition={this.setHoverPosition} />
+            <Hover left={this.state.hoverLeft} top={this.state.hoverTop} data={this.state.selectedDlc}>
+              <DlcHover data={this.state.selectedDlc} />
+              <ArrowLeft style={{ top: 10 }}></ArrowLeft>
+            </Hover>
+          </MainContainer >
+          : <MainContainer></MainContainer>
+        }
+      </React.Fragment>
+
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Dlc />, document.getElementById('dlc'));

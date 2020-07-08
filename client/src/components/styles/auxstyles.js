@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+//TO DO: refactor to reuse styling though inheritance
 const Title = styled.h2`
 font-size: 14px;
 letter-spacing: 2px;
@@ -47,6 +48,9 @@ display: block;
 opacity: 1;
 color: #c6d4df;
 font-size: 12px;
+left: ${props => props.left};
+top: ${props => props.top};
+display: ${props => Object.keys(props.data).length === 0 ? 'none' : 'visible'}
 `;
 
 const DlcTable = styled.div`
