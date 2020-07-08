@@ -16,21 +16,6 @@ text-transform: none;
 letter-spacing: 0;
 `;
 
-//TO DO: fix sizing problem to make arrow look like an arrow
-const ArrowLeft = styled.div`
-background-position: left;
-left: 5px;
-width: 7px;
-height: 15px;
-top: 48px;
-background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJlJREFUeNqc0k0KgCAQBlCdI0SLlkEtu4DLTt6yC7SN2hX0cwWbCQvDMa0PBhN9EsxIrbXgMs57RWueJR13Di+ooboeCEILpaZYDC/oCoshgLwYIhCL5TBtMcjOilUT1OJH6FdLrOWDobslYIN7/FCRmO4oMmCmIwbf6NGOAH4gZwA82EFnO7ghx14VuLRm6yAvtLDgEOUQYADt6VgCZRDsZgAAAABJRU5ErkJggg==) no-repeat top;
-position: absolute;
-padding: 0;
-margin: 0;
-display: block;
-`;
-
-
 class Dlc extends React.Component {
   constructor(props) {
     super(props);
@@ -88,7 +73,6 @@ class Dlc extends React.Component {
             <DlcList data={this.state.data} setHoverPosition={this.setHoverPosition} />
             <Hover left={this.state.hoverLeft} top={this.state.hoverTop} data={this.state.selectedDlc}>
               <DlcHover data={this.state.selectedDlc} />
-              <ArrowLeft style={{ top: 38 }}></ArrowLeft>
             </Hover>
           </MainContainer >
           : <MainContainer></MainContainer>

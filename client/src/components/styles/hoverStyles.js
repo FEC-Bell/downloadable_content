@@ -9,6 +9,7 @@ display: block;
 `;
 
 const HoverBox = styled.div`
+& {
 margin-top: 8px;
 margin-bottom: 8px;
 background: linear-gradient(to bottom, rgba(227,234,239,1) 0%,rgba(199,213,224,1) 100%);
@@ -20,6 +21,18 @@ box-shadow: 0 0 12px #000000;
 padding: 0;
 margin: 0;
 display: block;
+}
+&:after{
+  content:"";
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  top: 39px;
+  left: -2px; /* 1px buffer for zooming problems while rendering*/
+  border-width: 7px;
+  border-color: transparent rgba(227,234,239,1) transparent transparent;
+  border-style: solid;
+}
 `;
 
 const StyledScreenshots = styled.div`
