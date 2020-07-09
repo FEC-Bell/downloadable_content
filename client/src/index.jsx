@@ -22,23 +22,16 @@ class Dlc extends React.Component {
     this.state = {
       gameId: 66,
       data: [{}],
-      hoverLeft: '',
-      hoverTop: '',
       selectedDlc: {}
     };
     this.getData = this.getData.bind(this);
-    this.setHoverPosition = this.setHoverPosition.bind(this);
   }
 
   componentDidMount() {
     this.getData(this.state.gameId);
   }
 
-  setHoverPosition(hoverLeft, hoverTop, selectedDlc) {
-    this.setState({
-      hoverLeft, hoverTop, selectedDlc
-    });
-  }
+
 
   getData(gameId = 1) {
     axios.get(url + gameId)
@@ -70,10 +63,7 @@ class Dlc extends React.Component {
               </Title>
             </div>
 
-            <DlcList data={this.state.data} setHoverPosition={this.setHoverPosition} />
-            <Hover left={this.state.hoverLeft} top={this.state.hoverTop} data={this.state.selectedDlc}>
-              <DlcHover data={this.state.selectedDlc} />
-            </Hover>
+            <DlcList data={this.state.data} />
           </MainContainer >
           : <MainContainer></MainContainer>
         }
