@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DlcList from './components/dlcList.jsx';
-import DlcHover from './components/dlcHover.jsx';
 import axios from 'axios';
+import { createBrowserHistory } from 'history';
 import { MainContainer, Title, Browse, Hover } from './components/styles/auxstyles.js';
 import styled from 'styled-components';
 import { GlobalStyle } from './components/styles/globalStyles.js';
@@ -16,11 +16,23 @@ text-transform: none;
 letter-spacing: 0;
 `;
 
+let history = createBrowserHistory();
+let location = history.location;
+let action = history.action;
+console.log('loc ', location);
+
+history.listen(({ action, location }) => {
+  console.log(
+    `The current URL is ${location.pathname}${location.search}${location.hash}`
+  );
+  console.log(`The last navigation action was ${action}`);
+});
+
 class Dlc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameId: 66,
+      gameId: 0,
       data: [{}],
       selectedDlc: {}
     };
@@ -28,12 +40,15 @@ class Dlc extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(this.state.gameId);
+    this.setState({
+      gameId: this.props.gameId
+    });
+    this.getData(this.props.gameId);
   }
 
 
 
-  getData(gameId = 1) {
+  getData(gameId = 2) {
     axios.get(url + gameId)
       .then((data) => {
         this.setState({

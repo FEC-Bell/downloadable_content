@@ -33,7 +33,7 @@ app.get('/api/dlc/:gameId', (req, res) => {
   });
 });
 
-app.get('api/name/:gameId', (req, res) => {
+app.get('/api/name/:gameId', (req, res) => {
   let param = { gameId: req.params.gameId };
   db.searchTitle(param, (err, data) => {
     if (err) {
