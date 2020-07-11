@@ -73,17 +73,25 @@ class Entry extends React.Component {
     };
     this.selector = React.createRef();
     this.handleToggle = this.handleToggle.bind(this);
+    this.updatePosition = this.updatePosition.bind(this);
   }
+
+
   componentDidMount() {
-    let position = this.selector.current.getBoundingClientRect();
-    this.setState({
-      left: `${position.right - 16}px`
-    });
+    this.updatePosition();
   }
 
   handleToggle() {
     this.setState({
       hover: !this.state.hover
+    });
+    this.updatePosition();
+  }
+
+  updatePosition() {
+    let position = this.selector.current.getBoundingClientRect();
+    this.setState({
+      left: `${position.right - 16}px`
     });
   }
 
