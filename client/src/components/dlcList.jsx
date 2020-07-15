@@ -6,9 +6,9 @@ const DlcList = (props) => {
   return (
     <DlcTable>
       {
-        props.data.map((dlc) => {
+        props.data.map((dlc, idx) => {
           return (
-            <Entry data={dlc} setHoverPosition={props.setHoverPosition} />
+            <Entry data={dlc} setHoverPosition={props.setHoverPosition} key={idx}/>
           );
         })
       }

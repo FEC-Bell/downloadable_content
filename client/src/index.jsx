@@ -18,16 +18,7 @@ letter-spacing: 0;
 
 let history = createBrowserHistory();
 let location = history.location;
-let action = history.action;
 let loc = location.pathname.split('/');
-console.log('loc ', loc);
-
-// history.listen(({ action, location }) => {
-//   console.log(
-//     `The current URL is ${location.pathname}${location.search}${location.hash}`
-//   );
-//   console.log(`The last navigation action was ${action}`);
-// });
 
 class Dlc extends React.Component {
   constructor(props) {
@@ -46,8 +37,6 @@ class Dlc extends React.Component {
     });
     this.getData(this.props.gameId);
   }
-
-
 
   getData(gameId = 2) {
     axios.get(url + gameId)
@@ -78,7 +67,6 @@ class Dlc extends React.Component {
                 </Browse>
               </Title>
             </div>
-
             <DlcList data={this.state.data} />
           </MainContainer >
           : <MainContainer></MainContainer>
