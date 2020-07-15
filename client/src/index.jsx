@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DlcList from './components/dlcList.jsx';
-import DlcHover from './components/dlcHover.jsx';
 import axios from 'axios';
+import { createBrowserHistory } from 'history';
 import { MainContainer, Title, Browse, Hover } from './components/styles/auxstyles.js';
 import styled from 'styled-components';
 import { GlobalStyle } from './components/styles/globalStyles.js';
@@ -16,46 +16,40 @@ text-transform: none;
 letter-spacing: 0;
 `;
 
-//TO DO: fix sizing problem to make arrow look like an arrow
-const ArrowLeft = styled.div`
-background-position: left;
-left: 5px;
-width: 7px;
-height: 15px;
-top: 48px;
-background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJlJREFUeNqc0k0KgCAQBlCdI0SLlkEtu4DLTt6yC7SN2hX0cwWbCQvDMa0PBhN9EsxIrbXgMs57RWueJR13Di+ooboeCEILpaZYDC/oCoshgLwYIhCL5TBtMcjOilUT1OJH6FdLrOWDobslYIN7/FCRmO4oMmCmIwbf6NGOAH4gZwA82EFnO7ghx14VuLRm6yAvtLDgEOUQYADt6VgCZRDsZgAAAABJRU5ErkJggg==) no-repeat top;
-position: absolute;
-padding: 0;
-margin: 0;
-display: block;
-`;
+let history = createBrowserHistory();
+let location = history.location;
+let action = history.action;
+let loc = location.pathname.split('/');
+console.log('loc ', loc);
 
+// history.listen(({ action, location }) => {
+//   console.log(
+//     `The current URL is ${location.pathname}${location.search}${location.hash}`
+//   );
+//   console.log(`The last navigation action was ${action}`);
+// });
 
 class Dlc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameId: 66,
+      gameId: 0,
       data: [{}],
-      hoverLeft: '',
-      hoverTop: '',
       selectedDlc: {}
     };
     this.getData = this.getData.bind(this);
-    this.setHoverPosition = this.setHoverPosition.bind(this);
   }
 
   componentDidMount() {
-    this.getData(this.state.gameId);
-  }
-
-  setHoverPosition(hoverLeft, hoverTop, selectedDlc) {
     this.setState({
-      hoverLeft, hoverTop, selectedDlc
+      gameId: this.props.gameId
     });
+    this.getData(this.props.gameId);
   }
 
-  getData(gameId = 1) {
+
+
+  getData(gameId = 2) {
     axios.get(url + gameId)
       .then((data) => {
         this.setState({
@@ -85,11 +79,7 @@ class Dlc extends React.Component {
               </Title>
             </div>
 
-            <DlcList data={this.state.data} setHoverPosition={this.setHoverPosition} />
-            <Hover left={this.state.hoverLeft} top={this.state.hoverTop} data={this.state.selectedDlc}>
-              <DlcHover data={this.state.selectedDlc} />
-              <ArrowLeft style={{ top: 38 }}></ArrowLeft>
-            </Hover>
+            <DlcList data={this.state.data} />
           </MainContainer >
           : <MainContainer></MainContainer>
         }
@@ -99,4 +89,4 @@ class Dlc extends React.Component {
   }
 }
 
-ReactDOM.render(<Dlc />, document.getElementById('dlc'));
+ReactDOM.render(<Dlc gameId={loc[2]} />, document.getElementById('dlc'));

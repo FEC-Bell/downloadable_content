@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { DlcPrice, DlcRow, DiscountBloc } from './styles/auxstyles.js';
+import { DlcPrice, DlcRow, DiscountBloc, Hover } from './styles/auxstyles.js';
+import DlcHover from './dlcHover.jsx';
+import $ from 'jquery';
 
 const DlcName = styled.div`
 margin: 0;
@@ -62,34 +64,31 @@ var DiscountBlock = (props) => {
 };
 
 
-
 class Entry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hover: false
+      hover: false,
+      left: ''
     };
     this.selector = React.createRef();
     this.handleToggle = this.handleToggle.bind(this);
+  }
+  componentDidMount() {
+    let position = this.selector.current.getBoundingClientRect();
+    this.setState({
+      left: `${position.right - 16}px`
+    });
   }
 
   handleToggle() {
     this.setState({
       hover: !this.state.hover
     });
-
-    //TODO: adjust position so hover box appears to the right of the row
-    let position = this.selector.current.getBoundingClientRect();
-    if (!this.state.hover) {
-      //10px offset is arbitrary, will fine tune
-      this.props.setHoverPosition(`${position.right - 8}px`, `${position.top - 40}px`, this.props.data);
-    } else {
-      //comment out to for debugging
-      this.props.setHoverPosition(`${position.right - 10}px`, `${position.top}px`, {});
-    }
   }
 
   render() {
+
     return (
       <DlcRow className='dlcRow' highlight={this.state.hover} ref={this.selector}>
         <DlcPrice className='dlcPrice'>
@@ -101,6 +100,9 @@ class Entry extends React.Component {
         <DlcName className='dlcName' onMouseOver={this.handleToggle} onMouseOut={this.handleToggle}>
           {this.props.data.title}
         </DlcName>
+        <Hover left={this.state.left} top={'-38px'} data={this.state.hover.toString()}>
+          <DlcHover data={this.props.data} />
+        </Hover>
       </DlcRow>
     );
   }

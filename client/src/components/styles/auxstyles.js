@@ -50,7 +50,7 @@ color: #c6d4df;
 font-size: 12px;
 left: ${props => props.left};
 top: ${props => props.top};
-display: ${props => Object.keys(props.data).length === 0 ? 'none' : 'visible'}
+display: ${props => props.data === 'true' ? 'visible' : 'none'}
 `;
 
 const DlcTable = styled.div`
