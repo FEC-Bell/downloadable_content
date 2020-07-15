@@ -9,7 +9,8 @@
   },
   "scripts": {
     "server": "nodemon ./server/index.js",
-    "build": "webpack --config=webpack.config.js",
+    "build": "webpack --config=webpack.config.prod.js",
+    "build-dev": "webpack --config=webpack.config.dev.js",
     "seed": "node ./seeder/seeder.js",
     "test": "jest"
   },

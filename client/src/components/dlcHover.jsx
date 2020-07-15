@@ -34,7 +34,7 @@ const Content = (props) => {
         <StyledScreenshots id='hoverScreenshots'>
           {props.data.previews.map((url, idx) => {
             return (
-              <Screenshot style={{ animationDelay: `${idx}s`, backgroundImage: `url(${url})` }}>
+              <Screenshot style={{ animationDelay: `${idx}s`, backgroundImage: `url(${url})` }} key={idx}>
               </Screenshot>
             );
           })}
@@ -75,7 +75,6 @@ const DlcHover = (props) => {
     <React.Fragment>
       {view}
     </React.Fragment>
-
   );
 };
 

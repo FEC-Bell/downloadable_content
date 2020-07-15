@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { DlcPrice, DlcRow, DiscountBloc, Hover } from './styles/auxstyles.js';
 import DlcHover from './dlcHover.jsx';
-import $ from 'jquery';
+
 
 const DlcName = styled.div`
 margin: 0;
