@@ -4,13 +4,14 @@ const db = require('../database/index.js');
 const mongoose = require('mongoose');
 
 const app = express();
-const PORT = 3003;
+const PORT = 8080;
+const HOST = '0.0.0.0';
 
 app.use(express.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
 
-mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true });
+mongoose.connect('mongodb://mongo:27017/test', { useNewUrlParser: true });
 const connection = mongoose.connection;
 connection.on('error', console.error.bind(console, 'connection error'));
 connection.once('open', function () {
@@ -48,6 +49,6 @@ app.get('/api/name/:gameId', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`listening on port http://${HOST}:${PORT}`);
 });
