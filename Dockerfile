@@ -1,10 +1,16 @@
 FROM node:12
 
-WORKDIR /usr/src/app
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+
+RUN apt-get -q update && apt-get -qy install netcat
+
+WORKDIR /home/node/app
 
 COPY package*.json ./
 
-RUN npm ci --only=production
+USER node
+
+RUN npm install
 
 COPY . .
 

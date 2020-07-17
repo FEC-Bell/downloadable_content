@@ -4,11 +4,26 @@ const gameNames = require('./data/2-titles/title');
 const dlcData = require('./data/1-dlcs/dlc');
 const { Seeder } = require('mongo-seeding');
 
+const {
+  MONGO_USERNAME,
+  MONGO_PASSWORD,
+  MONGO_HOSTNAME,
+  MONGO_PORT,
+  MONGO_DB
+} = process.env;
+
+const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+
 const config = {
-  database: {
-    name: 'test',
-    host: 'localhost'
-  },
+  database: url,
+  // database: {
+  //   name: MONGO_DB,
+  //   host: MONGO_HOSTNAME,
+  //   port: MONGO_PORT,
+  //   username: MONGO_USERNAME,
+  //   password: MONGO_PASSWORD,
+
+  // },
   dropDatabase: true,
 };
 

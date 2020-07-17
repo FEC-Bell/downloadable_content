@@ -1,4 +1,4 @@
 main.js
 node_modules
 cloudinary_key.js
-
+.env
