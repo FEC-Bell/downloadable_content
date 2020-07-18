@@ -16,14 +16,6 @@ const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${M
 
 const config = {
   database: url,
-  // database: {
-  //   name: MONGO_DB,
-  //   host: MONGO_HOSTNAME,
-  //   port: MONGO_PORT,
-  //   username: MONGO_USERNAME,
-  //   password: MONGO_PASSWORD,
-
-  // },
   dropDatabase: true,
 };
 
