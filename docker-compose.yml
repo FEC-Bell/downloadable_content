@@ -16,7 +16,7 @@ services:
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
     ports:
-      - "3003:8080"
+      - "80:8080"
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
