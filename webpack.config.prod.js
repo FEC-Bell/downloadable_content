@@ -2,6 +2,13 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+let cleanOptions = {
+  root: '/full/webpack/root/path',
+  exclude: ['shared.js'],
+  verbose: true,
+  dry: false
+};
+
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
@@ -19,18 +26,16 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-react', '@babel/preset-env'],
-            sourceMaps: "inline",
+            sourceMaps: 'inline',
           }
         }
       }
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin(cleanOptions),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      inject: true,
-      template: path.resolve(__dirname, 'client/dist', 'index.html'),
+      template: 'client/template.html'
     }),
   ]
 };
