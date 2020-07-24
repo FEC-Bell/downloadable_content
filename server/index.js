@@ -12,19 +12,26 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 
 app.get('/api/dlc/:gameId', (req, res) => {
-  let param = { associatedGameId: req.params.gameId };
-  console.log('GET received, ID= ' + param.associatedGameId);
-  db.searchDLC(param, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      if (data.length) {
-        res.send(data);
+  let gameId = parseInt(req.params.gameId);
+  console.log('GET received, ID= ' + gameId);
+  if (isNaN(gameId)) {
+    res.status(500).send('invalid search!');
+  } else {
+    let param = { associatedGameId: gameId };
+
+    db.searchDLC(param, (err, data) => {
+      if (err) {
+        res.sendStatus(500);
       } else {
-        res.status(404).send('Game ID not found!');
+        if (data.length) {
+          res.send(data);
+        } else {
+          res.status(404).send('Game ID not found!');
+        }
       }
-    }
-  });
+    });
+  }
+
 });
 
 app.get('/api/name/:gameId', (req, res) => {

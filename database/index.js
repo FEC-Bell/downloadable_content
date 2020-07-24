@@ -67,8 +67,9 @@ const searchDLC = (param, callback) => {
     if (err) {
       console.error(err);
       callback(err);
+    } else {
+      callback(null, doc);
     }
-    callback(null, doc);
   });
 };
 
