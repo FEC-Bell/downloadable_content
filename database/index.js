@@ -1,4 +1,31 @@
 const mongoose = require('mongoose');
+
+const {
+  MONGO_USERNAME,
+  MONGO_PASSWORD,
+  MONGO_HOSTNAME,
+  MONGO_PORT,
+  MONGO_DB
+} = process.env;
+
+const options = {
+  useNewUrlParser: true,
+  reconnectTries: Number.MAX_VALUE,
+  reconnectInterval: 500,
+  connectTimeoutMS: 10000,
+};
+
+const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+
+mongoose.connect(url, options).then(() => {
+  console.log(`Mongo Connected at ${url}!`);
+})
+  .catch((err) => {
+    console.log(err);
+  });
+
+
+
 const dlcSchema = new mongoose.Schema({
   dlcId: Number,
   associatedGameId: Number,
@@ -11,12 +38,11 @@ const dlcSchema = new mongoose.Schema({
   userTags: [String],
   previews: [String],
 });
+
 const titleSchema = new mongoose.Schema({
   gameId: Number,
   gameTitle: String
 });
-
-
 
 const dlc = mongoose.model('dlc', dlcSchema);
 const title = mongoose.model('title', titleSchema);
@@ -41,8 +67,9 @@ const searchDLC = (param, callback) => {
     if (err) {
       console.error(err);
       callback(err);
+    } else {
+      callback(null, doc);
     }
-    callback(null, doc);
   });
 };
 
@@ -55,8 +82,6 @@ const searchTitle = (param, callback) => {
     callback(null, doc);
   });
 };
-
-
 
 
 module.exports.makeEntry = makeEntry;
