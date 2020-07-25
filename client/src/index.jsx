@@ -5,7 +5,6 @@ import axios from 'axios';
 import { createBrowserHistory } from 'history';
 import { MainContainer, Title, Browse, Hover } from './components/styles/auxstyles.js';
 import styled from 'styled-components';
-import { GlobalStyle } from './components/styles/globalStyles.js';
 
 const url = '/api/dlc/';
 
@@ -15,6 +14,14 @@ text-decoration: none;
 text-transform: none;
 letter-spacing: 0;
 `;
+
+const theme = {
+  fontFamily: 'Roboto, sans-serif',
+  margin: 0,
+  padding: 0
+};
+
+
 
 let history = createBrowserHistory();
 let location = history.location;
@@ -52,9 +59,8 @@ class Dlc extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <GlobalStyle />
         {Object.keys(this.state.data[0]).length ?
-          <MainContainer>
+          <MainContainer theme={theme}>
             <div>
               <Title>CONTENT FOR THIS GAME
                 <Browse className='note'>

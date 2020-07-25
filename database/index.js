@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
+const dotenv = require('dotenv');
 
 const {
   MONGO_USERNAME,
@@ -15,13 +17,14 @@ const options = {
   connectTimeoutMS: 10000,
 };
 
-const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=test`;
 
 mongoose.connect(url, options).then(() => {
   console.log(`Mongo Connected at ${url}!`);
 })
   .catch((err) => {
-    console.log(err);
+    console.log(url);
+    console.error(err);
   });
 
 

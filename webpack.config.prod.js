@@ -2,12 +2,12 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let cleanOptions = {
-  root: '/full/webpack/root/path',
-  exclude: ['shared.js'],
-  verbose: true,
-  dry: false
-};
+// let cleanOptions = {
+//   root: '/full/webpack/root/path',
+//   exclude: ['shared.js'],
+//   verbose: true,
+//   dry: false
+// };
 
 module.exports = {
   mode: 'production',
@@ -15,7 +15,8 @@ module.exports = {
   entry: __dirname + '/client/src/index.jsx',
   output: {
     filename: 'main.js',
-    path: __dirname + '/client/dist'
+    path: __dirname + '/client/dist',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -33,7 +34,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(cleanOptions),
+    // new CleanWebpackPlugin(cleanOptions),
     new HtmlWebpackPlugin({
       template: 'client/template.html'
     }),
