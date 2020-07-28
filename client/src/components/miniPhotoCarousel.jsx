@@ -5,20 +5,25 @@ class MiniPhotoCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      curIDX: 0
+      duration: 0
     };
+  }
+  componentDidMount() {
+    this.setState({
+      duration: `${this.props.data.length}s`
+    });
   }
 
 
   render() {
     return (
       <StyledScreenshots id='hoverScreenshots'>
-        {/* {this.props.data.map((url, idx) => {
+        {this.props.data.map((url, idx) => {
           return (
-            <Screenshot style={{ animationDelay: `${idx}s`, backgroundImage: `url(${url})` }} key={idx}>
+            <Screenshot delay={`${idx}s`} url={`url(${url})`} key={idx} duration={this.state.duration}>
             </Screenshot>
           );
-        })} */}
+        })}
       </StyledScreenshots>
     );
   }
