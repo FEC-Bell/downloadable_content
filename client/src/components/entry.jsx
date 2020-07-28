@@ -91,7 +91,7 @@ class Entry extends React.Component {
   updatePosition() {
     let position = this.selector.current.getBoundingClientRect();
     this.setState({
-      left: `${position.right - 16}px`
+      left: `${position.right - position.left - 8}px`
     });
   }
 
@@ -108,7 +108,7 @@ class Entry extends React.Component {
         <DlcName className='dlcName' onMouseOver={this.handleToggle} onMouseOut={this.handleToggle}>
           {this.props.data.title}
         </DlcName>
-        <Hover left={this.state.left} top={'-38px'} data={this.state.hover.toString()}>
+        <Hover left={this.state.left} top={'-40px'} data={this.state.hover.toString()}>
           <DlcHover data={this.props.data} />
         </Hover>
       </DlcRow>

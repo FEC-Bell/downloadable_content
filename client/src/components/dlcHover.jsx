@@ -36,14 +36,6 @@ const Content = (props) => {
           <div></div>
         </StyledRelease>
         <MiniPhotoCarousel data={props.data.previews}/>
-        {/* <StyledScreenshots id='hoverScreenshots'>
-          {props.data.previews.map((url, idx) => {
-            return (
-              <Screenshot style={{ animationDelay: `${idx}s`, backgroundImage: `url(${url})` }} key={idx}>
-              </Screenshot>
-            );
-          })}
-        </StyledScreenshots> */}
         <StyledBody className='hoverBody'>
           <StyledReviewSum>
             <div className='title'>Overall user reviews:</div>
