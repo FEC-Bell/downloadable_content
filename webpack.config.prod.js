@@ -1,7 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+var Visualizer = require('webpack-visualizer-plugin');
 // let cleanOptions = {
 //   root: '/full/webpack/root/path',
 //   exclude: ['shared.js'],

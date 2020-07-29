@@ -2,3 +2,5 @@ main.js
 node_modules
 cloudinary_key.js
 .env
+main.js.map
+stats.html

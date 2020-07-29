@@ -1,6 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var Visualizer = require('webpack-visualizer-plugin');
 
 // let cleanOptions = {
 //   root: '/full/webpack/root/path',
@@ -37,6 +38,6 @@ module.exports = {
     // new CleanWebpackPlugin(cleanOptions),
     new HtmlWebpackPlugin({
       template: 'client/template.html'
-    }),
+    }),new Visualizer()
   ]
 };
