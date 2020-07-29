@@ -9,7 +9,9 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
-
+app.get('/app/:gameid', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
+});
 
 app.get('/api/dlc/:gameId', (req, res) => {
   let gameId = parseInt(req.params.gameId);

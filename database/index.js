@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
+const dotenv = require('dotenv');
 
 const {
   MONGO_USERNAME,
@@ -21,7 +23,8 @@ mongoose.connect(url, options).then(() => {
   console.log(`Mongo Connected at ${url}!`);
 })
   .catch((err) => {
-    console.log(err);
+    console.log(url);
+    console.error(err);
   });
 
 

@@ -37,6 +37,7 @@ const MainContainer = styled.div`
 margin-bottom: 11px;
 margin-top: 60px;
 background: #1b2838;
+width: 616px;
 `;
 
 const Hover = styled.div`
@@ -44,13 +45,13 @@ position: absolute;
 z-index: 1526;
 padding: 5px 12px 0 12px;
 margin: 0;
-display: block;
+display: inline-block;
 opacity: 1;
 color: #c6d4df;
 font-size: 12px;
 left: ${props => props.left};
 top: ${props => props.top};
-display: ${props => props.data === 'true' ? 'visible' : 'none'}
+visibility: ${props => props.data === 'true' ? 'visible' : 'hidden'}
 `;
 
 const DlcTable = styled.div`

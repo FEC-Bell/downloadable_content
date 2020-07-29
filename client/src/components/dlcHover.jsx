@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import MiniPhotoCarousel from './miniPhotoCarousel.jsx';
 import {
   StyledReviewSum, StyledBody, StyledTag, StyledRow, StyledRelease, StyledTitle, StyledReview, Screenshot,
   StyledScreenshots, HoverBox, StyledContent
@@ -7,6 +8,9 @@ import {
 
 const positives = ['Overwhelmingly Positive', 'Mostly Positive', 'Very Positive'];
 const negatives = ['Overwhelmingly Negative', 'Mostly Negative', 'Very Negative'];
+
+
+
 
 const Content = (props) => {
   let color;
@@ -31,14 +35,7 @@ const Content = (props) => {
           <span>{`Released: ${moment(props.data.releaseDate).format('MMM D, Y')}`}</span>
           <div></div>
         </StyledRelease>
-        <StyledScreenshots id='hoverScreenshots'>
-          {props.data.previews.map((url, idx) => {
-            return (
-              <Screenshot style={{ animationDelay: `${idx}s`, backgroundImage: `url(${url})` }} key={idx}>
-              </Screenshot>
-            );
-          })}
-        </StyledScreenshots>
+        <MiniPhotoCarousel data={props.data.previews}/>
         <StyledBody className='hoverBody'>
           <StyledReviewSum>
             <div className='title'>Overall user reviews:</div>

@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: nodejs
-    container_name: nodejs
+    image: jeremylfchen/steam_app_dlc
+    container_name: dlcserver
     restart: unless-stopped
     env_file: .env
     environment:

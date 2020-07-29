@@ -10,7 +10,7 @@
   "scripts": {
     "server": "nodemon ./server/index.js",
     "build": "webpack --config=webpack.config.prod.js",
-    "build-dev": "webpack --config=webpack.config.dev.js",
+    "build-dev": "webpack --config=webpack.config.dev.js --watch",
     "seed": "node ./seeder/seeder.js",
     "test": "jest"
   },

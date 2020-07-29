@@ -43,11 +43,17 @@ margin: 5px 0;
 `;
 
 const ScreenshotHoverFadein = keyframes`
-from {
+0% {
   opacity: 0;
 }
-to {
+3% {
   opacity: 1;
+}
+28% {
+  opacity: 1;
+}
+31% {
+  opacity: 0;
 }
 `;
 
@@ -57,11 +63,22 @@ width: 100%;
 height: 100%;
 background-size: cover;
 background-position: center center;
-opacity: 0;
+opacity: ${props => props.idx === 0 ? 1 : 0};
 transition: opacity 300ms;
-animation: ${ScreenshotHoverFadein} 3s linear;
+animation-name: ${ScreenshotHoverFadein};
+animation-duration: ${props => props.duration};
+animation-fill-mode: none;
+animation-timing-function: linear;
+animation-direction: normal;
 animation-iteration-count: infinite;
+animation-play-state: running;
+transition-delay: 0s;
+transition-duration: 0.3s;
+transition-property: opacity;
+transition-timing-function: ease-in;
 display: block;
+background-image: ${props => props.url};
+animation-delay: ${props => props.delay};
 `;
 
 const StyledReview = styled.span`
