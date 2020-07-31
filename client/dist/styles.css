@@ -10,3 +10,7 @@ html, body {
   background: #1B2838;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+#dlc {
+  margin-left: 5px;
+}
