@@ -2,8 +2,7 @@ import React from 'react';
 // import moment from 'moment';
 import MiniPhotoCarousel from './miniPhotoCarousel.jsx';
 import {
-  StyledReviewSum, StyledBody, StyledTag, StyledRow, StyledRelease, StyledTitle, StyledReview, Screenshot,
-  StyledScreenshots, HoverBox, StyledContent
+  StyledReviewSum, StyledBody, StyledTag, StyledRow, StyledRelease, StyledTitle, StyledReview, HoverBox, StyledContent
 } from './styles/hoverStyles.js';
 
 const positives = ['Overwhelmingly Positive', 'Mostly Positive', 'Very Positive'];
