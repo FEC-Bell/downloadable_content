@@ -44,7 +44,7 @@ app.get('/api/name/:gameId', (req, res) => {
   if (isNaN(gameId) || gameId === undefined) {
     res.status(500).send('invalid search!');
   } else {
-    let param = { associatedGameId: gameId };
+    let param = { gameId: gameId };
     db.searchTitle(param, (err, data) => {
       if (err) {
         res.sendStatus(500);
