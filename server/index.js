@@ -9,7 +9,7 @@ const port = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(compression());
-app.unsubscribe(cors());
+app.use(cors());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/app/:gameid', (req, res) => {
