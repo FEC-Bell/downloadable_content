@@ -2,13 +2,14 @@ const express = require('express');
 const path = require('path');
 const compression =  require('compression');
 const db = require('../database/index.js');
-
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(compression());
+app.unsubscribe(cors());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/app/:gameid', (req, res) => {
