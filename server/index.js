@@ -41,17 +41,21 @@ app.get('/api/dlc/:gameId', (req, res) => {
 
 app.get('/api/name/:gameId', (req, res) => {
   let param = { gameId: req.params.gameId };
-  db.searchTitle(param, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      if (data.length) {
-        res.send(data);
+  if (isNaN(gameId) || gameId === undefined) {
+    res.status(500).send('invalid search!');
+  } else {
+    db.searchTitle(param, (err, data) => {
+      if (err) {
+        res.sendStatus(500);
       } else {
-        res.status(404).send('Game ID not found!');
+        if (data.length) {
+          res.send(data);
+        } else {
+          res.status(404).send('Game ID not found!');
+        }
       }
-    }
-  });
+    });
+  }
 });
 
 app.listen(port, () => {
