@@ -40,7 +40,7 @@ app.get('/api/dlc/:gameId', (req, res) => {
 });
 
 app.get('/api/name/:gameId', (req, res) => {
-  let param = { gameId: req.params.gameId };
+  let gameId = parseInt(req.params.gameId);
   if (isNaN(gameId) || gameId === undefined) {
     res.status(500).send('invalid search!');
   } else {
