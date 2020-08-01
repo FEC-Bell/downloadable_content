@@ -18,7 +18,7 @@ app.get('/app/:gameid', (req, res) => {
 app.get('/api/dlc/:gameId', (req, res) => {
   let gameId = parseInt(req.params.gameId);
   console.log('GET received, ID= ' + gameId);
-  if (isNaN(gameId)) {
+  if (isNaN(gameId) || gameId === undefined) {
     res.status(500).send('invalid search!');
   } else {
     let param = { associatedGameId: gameId };
