@@ -1,15 +1,18 @@
 import React from 'react';
-import moment from 'moment';
+// import moment from 'moment';
 import MiniPhotoCarousel from './miniPhotoCarousel.jsx';
 import {
-  StyledReviewSum, StyledBody, StyledTag, StyledRow, StyledRelease, StyledTitle, StyledReview, Screenshot,
-  StyledScreenshots, HoverBox, StyledContent
+  StyledReviewSum, StyledBody, StyledTag, StyledRow, StyledRelease, StyledTitle, StyledReview, HoverBox, StyledContent
 } from './styles/hoverStyles.js';
 
 const positives = ['Overwhelmingly Positive', 'Mostly Positive', 'Very Positive'];
 const negatives = ['Overwhelmingly Negative', 'Mostly Negative', 'Very Negative'];
 
-
+const dateFormatter = (date) => {
+  let arr = date.split(' ');
+  let answer = `${arr[1]} ${arr[2]}, ${arr[3]}`;
+  return answer;
+};
 
 
 const Content = (props) => {
@@ -23,7 +26,7 @@ const Content = (props) => {
   }
 
   let moddedReviews = props.data.totalReviews.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-
+  let date = dateFormatter(props.data.releaseDate);
   return (
     <HoverBox id='hoverBox'>
       <StyledContent>
@@ -32,7 +35,7 @@ const Content = (props) => {
           {props.data.title}
         </StyledTitle>
         <StyledRelease id='hoverRelease'>
-          <span>{`Released: ${moment(props.data.releaseDate).format('MMM D, Y')}`}</span>
+          <span>{`Released: ${date}`}</span>
           <div></div>
         </StyledRelease>
         <MiniPhotoCarousel data={props.data.previews}/>

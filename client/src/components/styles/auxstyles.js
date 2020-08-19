@@ -35,7 +35,7 @@ font-style: normal;
 
 const MainContainer = styled.div`
 margin-bottom: 11px;
-margin-top: 60px;
+// margin-top: 60px;
 background: #1b2838;
 width: 616px;
 `;
