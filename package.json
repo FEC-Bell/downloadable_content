@@ -28,7 +28,7 @@
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "history": "^5.0.0",
-    "html-webpack-plugin": "^4.3.0",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^26.1.0",
     "jquery": "^3.5.1",
     "mongo-seeding": "^3.4.1",
@@ -38,8 +38,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "devDependencies": {
